@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import tickIcon from '../assets/check_circle_black_24dp.svg'
 
+interface Props {
+	imgSrc: string
+}
+
 const StyledCompleteUpload = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -35,6 +39,7 @@ const StyledImageWrapper = styled.div`
 	border-radius: 12px;
 	img {
 		display: block;
+		max-width: 100%;
 	}
 `
 
@@ -55,16 +60,16 @@ const StyledCopyButton = styled.button`
 	color: #ffffff;
 `
 
-const CompleteUpload = () => {
+const CompleteUpload = ({imgSrc}: Props) => {
 	return <StyledCompleteUpload>
 		<img src={tickIcon} alt="" width="35" />
 		<StyledHeader>Uploaded Successfully!</StyledHeader>
 		<StyledImageWrapper>
-			<img src="https://via.placeholder.com/338x224" />
+			{imgSrc.length > 0 && <img src={imgSrc} alt="" />}
 		</StyledImageWrapper>
 		<StyledLinkCopier>
 			<StyledURL>
-				https://domain.com/image.jpg
+				{imgSrc}
 			</StyledURL>
 			<StyledCopyButton>
 				Copy Link

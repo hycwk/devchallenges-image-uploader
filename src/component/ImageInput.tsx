@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import ImagePlaceholder from '../assets/image.svg';
+import { ChooseImageProps } from './ChooseImage'
 
 const StyledImageInput = styled.div`
 	display: flex;
@@ -38,7 +39,7 @@ const StyledImageOrLabel = styled.div`
 	color: #BDBDBD;
 `
 
-export const StyledChooseButton = styled.button`
+const StyledChooseButton = styled.button`
 	padding: 8px 16px;
 	margin: 0 auto;
 	border: none;
@@ -47,10 +48,13 @@ export const StyledChooseButton = styled.button`
 	color: #ffffff;
 `
 
-const ImageInput = () => {
+const ImageInput = ({onChange}: Partial<ChooseImageProps>) => {
+
+	const $inputFile = useRef(null)
+
 	return <StyledImageInput>
 		<StyedImagePlaceArea>
-			<img src={ImagePlaceholder} />
+			<img src={ImagePlaceholder} alt="" />
 			<StyledImageDraggingHint>
 				Drag & Drop your image here
 			</StyledImageDraggingHint>
@@ -59,6 +63,7 @@ const ImageInput = () => {
 			Or
 		</StyledImageOrLabel>
 		<StyledChooseButton>Choose a file</StyledChooseButton>
+		<input ref={$inputFile} type="file" onChange={onChange}/>
 	</StyledImageInput>
 }
 

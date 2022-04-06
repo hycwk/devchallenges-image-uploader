@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+interface Props {
+	onUploadStart?: () => void;
+	onUploadComplete?: (url: string) => void;
+}
+
 const StyledLoadingAnimation = styled.div`
 	overflow: hidden;
 	position: relative;
@@ -31,7 +36,7 @@ const StyledLoadingAnimation = styled.div`
 	}
 `
 
-const  Uploading = () => {
+const  Uploading = ({onUploadStart, onUploadComplete}: Props) => {
 	return <>
 		Uploading...
 		<StyledLoadingAnimation />
