@@ -59,7 +59,6 @@ const ImageUploader = () => {
 		const files = (target.files as FileList);
 		const getResult = ajaxUploadImageKit((result) => {
 			const _result = JSON.parse(result)
-			console.log(_result.url);
 			setProgress({type: COMPLETE, url: _result.url});
 		})
 		getResult(files);

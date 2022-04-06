@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { DOMElement, ReactElement, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { InputFiles } from 'typescript';
 import ImagePlaceholder from '../assets/image.svg';
 import { ChooseImageProps } from './ChooseImage'
 
@@ -46,11 +47,21 @@ const StyledChooseButton = styled.button`
 	background: #2F80ED;
 	border-radius: 8px;
 	color: #ffffff;
+	cursor: pointer;
 `
 
 const ImageInput = ({onChange}: Partial<ChooseImageProps>) => {
 
-	const $inputFile = useRef(null)
+	const [clickCount, setClickCount] = useState<number>(0)
+
+	const inputFile = useRef<any>(null)
+
+	useEffect(() => {
+		if (inputFile && inputFile.current) {
+			inputFile.current.click()
+		}
+	}, [clickCount])
+	
 
 	return <StyledImageInput>
 		<StyedImagePlaceArea>
@@ -62,8 +73,8 @@ const ImageInput = ({onChange}: Partial<ChooseImageProps>) => {
 		<StyledImageOrLabel>
 			Or
 		</StyledImageOrLabel>
-		<StyledChooseButton>Choose a file</StyledChooseButton>
-		<input ref={$inputFile} type="file" onChange={onChange}/>
+		<StyledChooseButton onClick={() => setClickCount(clickCount + 1)}>Choose a file</StyledChooseButton>
+		<input ref={inputFile} type="file" onChange={onChange} hidden={true}/>
 	</StyledImageInput>
 }
 

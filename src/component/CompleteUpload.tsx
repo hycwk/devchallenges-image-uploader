@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { copyTextToClipboard } from 'utils';
 import tickIcon from '../assets/check_circle_black_24dp.svg'
 
 interface Props {
@@ -44,7 +45,10 @@ const StyledImageWrapper = styled.div`
 `
 
 const StyledURL = styled.div`
+	overflow: hidden;
 	padding-left: 8px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	font-size: 8px;
 	font-weight: 500;
 	line-height: 12px;
@@ -52,15 +56,23 @@ const StyledURL = styled.div`
 `
 
 const StyledCopyButton = styled.button`
+	width: 70px;
 	padding: 8px 16px;
 	border: none;
 	background: #2F80ED;
 	border-radius: 8px;
+	white-space: nowrap;
 	font-size: 8px;
 	color: #ffffff;
+	cursor: pointer;
 `
 
 const CompleteUpload = ({imgSrc}: Props) => {
+	const [copied, setCopied] = useState(false)
+	const onClickCopyButton = (imgSrc:string) => {
+		copyTextToClipboard(imgSrc)
+		setCopied(true)
+	}
 	return <StyledCompleteUpload>
 		<img src={tickIcon} alt="" width="35" />
 		<StyledHeader>Uploaded Successfully!</StyledHeader>
@@ -71,8 +83,9 @@ const CompleteUpload = ({imgSrc}: Props) => {
 			<StyledURL>
 				{imgSrc}
 			</StyledURL>
-			<StyledCopyButton>
-				Copy Link
+			<StyledCopyButton onClick={() => onClickCopyButton(imgSrc)}>
+				{copied || `Copy Link`}
+				{copied && `Copied`}
 			</StyledCopyButton>
 		</StyledLinkCopier>
 	</StyledCompleteUpload>
