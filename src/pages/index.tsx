@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './_app';
 import reportWebVitals from '../reportWebVitals';
 
-export default function index(params) {
+export default function index() {
 	return <App/>
 };
 
