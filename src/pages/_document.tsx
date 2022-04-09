@@ -26,6 +26,14 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+					<footer>
+						<p style={{textAlign: 'center'}}>
+							created by <b>
+								<u><a href="https://github.com/hycwk/" target={'_blank'}>hycwk</a></u>
+							</b>
+							- devChallenges.io
+						</p>
+					</footer>
         </body>
       </Html>
     )

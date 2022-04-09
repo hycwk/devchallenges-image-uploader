@@ -6,3 +6,11 @@ html, body, #root, #__next{
 	font-family: 'Poppins', sans-serif;
 	font-weight: 500;
 }
+
+footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	color: #ccc
+}
