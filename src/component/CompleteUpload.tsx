@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { copyTextToClipboard } from 'utils';
-import tickIcon from '../../public/assets/check_circle_black_24dp.svg'
-
+import Image from 'next/image';
 interface Props {
 	imgSrc: string
 }
@@ -74,7 +73,7 @@ const CompleteUpload = ({imgSrc}: Props) => {
 		setCopied(true)
 	}
 	return <StyledCompleteUpload>
-		<img src={tickIcon} alt="" width="35" />
+		<Image src="/assets/check_circle_black_24dp.svg" alt="" width="35" />
 		<StyledHeader>Uploaded Successfully!</StyledHeader>
 		<StyledImageWrapper>
 			{imgSrc.length > 0 && <img src={imgSrc} alt="" />}
