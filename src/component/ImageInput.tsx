@@ -1,7 +1,6 @@
 import React, { DOMElement, ReactElement, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { InputFiles } from 'typescript';
-import ImagePlaceholder from '../assets/image.svg';
+import Image from 'next/image';
 import { ChooseImageProps } from './ChooseImage'
 
 const StyledImageInput = styled.div`
@@ -65,7 +64,7 @@ const ImageInput = ({onChange}: Partial<ChooseImageProps>) => {
 
 	return <StyledImageInput>
 		<StyedImagePlaceArea>
-			<img src={ImagePlaceholder} alt="" />
+			<Image src="/assets/image.svg" alt="" width="115" height="90" />
 			<StyledImageDraggingHint>
 				Drag & Drop your image here
 			</StyledImageDraggingHint>

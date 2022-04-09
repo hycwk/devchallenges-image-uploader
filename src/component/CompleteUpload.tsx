@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { copyTextToClipboard } from 'utils';
-import tickIcon from '../assets/check_circle_black_24dp.svg'
+import tickIcon from '../../public/assets/check_circle_black_24dp.svg'
 
 interface Props {
 	imgSrc: string

@@ -12,7 +12,7 @@ export const fetchAPI = async (reader: FileReader) => {
 	}
 	let bodyContent = {'file': reader.result};
 
-	return await fetch("http://localhost:8080/imagekit", {
+	return await fetch("/api/uploadImage", {
 		method: "POST",
 		body: JSON.stringify(bodyContent),
 		headers: headersList
