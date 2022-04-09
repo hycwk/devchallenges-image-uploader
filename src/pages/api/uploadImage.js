@@ -4,8 +4,8 @@ export default function handler(req, res) {
 	if (req.method === 'POST') {
     // Process a POST request
 		var imagekit = new ImageKit({
-			publicKey : "public_PR+u2HN6grWG7gy7opHURaeOHvQ=",
-			privateKey : "private_W5B4sWFUjbB0PAJ6LikiMJFZD2g=",
+			publicKey : process.env.PUBLIC_KEY,
+			privateKey : process.env.PRIVATE_KET,
 			urlEndpoint : "https://ik.imagekit.io/zbfky4hzxb3"
 		});
 	
