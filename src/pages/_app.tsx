@@ -7,7 +7,7 @@ import '../../public/assets/index.css';
 function App() {
   return (
 		<PageWrapper>
-			<ImageUploader/>
+			<ImageUploader />
 		</PageWrapper>
   );
 }
